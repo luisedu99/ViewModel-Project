@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">ViewModel Project</string>
+    <string name="mEstudiante">Guardar Estudiantes</string>
+    <string name="mNotas">Guardar Notas</string>
+    <string name="mRegistro">Registro de Estudiantes</string>
+    <string name="mDescripcionEstudiante">Boton Guardar Estudiante</string>
+    <string name="mDescripcionNotas">Boton Guardar Notas</string>
+    <string name="mDescripcionRegistro">Boton Ver registro</string>
+    <string name="carnet">Ingrese su Carnet</string>
+    <string name="nombre">Ingrese su nombre</string>
+    <string name="apellido">Ingrese su apellido</string>
+    <string name="carrera">Ingrese su carrera</string>
+    <string name="anio">Ingrese año que cursa</string>
+    <string name="guardar">Guardar</string>
 </resources>

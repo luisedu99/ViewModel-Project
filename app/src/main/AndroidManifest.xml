@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ViewModelProject">
         <activity
+            android:name=".RegistroAcademico"
+            android:exported="false" />
+        <activity
+            android:name=".GuardarNotas"
+            android:exported="false" />
+        <activity
+            android:name=".GuardarEstudiantes"
+            android:exported="false" />
+        <activity
             android:name=".CumCalculateScreen"
             android:exported="false" />
         <activity
