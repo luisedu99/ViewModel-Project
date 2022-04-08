@@ -13,7 +13,7 @@ public class adminSQLiteOpenHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table Materias(codMateria text primary key,NombreMateria text,uv int)");
-        db.execSQL("create table Estudiantes(Carnet text primary key,Nombre text,Apellido text,Carrera text,año text)");
+        db.execSQL("create table Estudiantes(Carnet text primary key,Nombre text,Apellido text,Carrera text,Año text)");
         db.execSQL("Create table Notas(IdNota int primary key,carnet text,codMateria text,uv int, nota int,uvAlcanzada int)");
 
     }

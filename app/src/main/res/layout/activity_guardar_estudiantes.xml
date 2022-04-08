@@ -47,7 +47,8 @@
             android:id="@+id/btGuardarEstudiante"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/guardar"/>
+            android:text="@string/guardar"
+            android:onClick="GuardarEstudiante"/>
     </LinearLayout>
 
 
