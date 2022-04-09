@@ -12,4 +12,13 @@
     <string name="carrera">Ingrese su carrera</string>
     <string name="anio">Ingrese año que cursa</string>
     <string name="guardar">Guardar</string>
+    <string name="carnetN">Numero de carnet</string>
+    <string name="materiaN">Materia</string>
+    <string name="CodMat">Codigo de Materia</string>
+    <string name="uv">Unidades Valorativas</string>
+    <string name="nota">Ingrese su calificacion</string>
+    <string name="guardarN">Guardar Nota</string>
+    <string name="MenuN">Bienvenido al Registro de Notas</string>
+    <string name="calcularuv">Calular uv ganadas</string>
+    <string name="uvganadas">U.V Obtenidas</string>
 </resources>

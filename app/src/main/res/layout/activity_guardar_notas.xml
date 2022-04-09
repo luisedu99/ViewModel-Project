@@ -5,5 +5,89 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".GuardarNotas">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/MenuN"
+                android:textAlignment="center"
+                android:textSize="4mm"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="@string/carnetN"
+                android:textAlignment="center"/>
+
+            <Spinner
+                android:id="@+id/spCarnet"
+                android:layout_width="264dp"
+                android:layout_height="40dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="@string/materiaN"
+                android:textAlignment="center"/>
+            <Spinner
+                android:id="@+id/spMateria"
+                android:layout_width="317dp"
+                android:layout_height="40dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="@string/CodMat"
+                android:textAlignment="center"/>
+            <TextView
+                android:id="@+id/CodMateria"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="@string/uv"
+                android:textAlignment="center"/>
+            <TextView
+                android:id="@+id/uvN"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="@string/nota"
+                android:textAlignment="center"/>
+            <EditText
+                android:id="@+id/ednotaN"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:text="@string/uvganadas"
+                android:textAlignment="center"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"/>
+            <TextView
+                android:id="@+id/tvUVObtenidas"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"/>
+            <Button
+                android:id="@+id/btCalcularUV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/calcularuv"
+                android:onClick="CalcularUV"/>
+            <Button
+                android:id="@+id/btGuardarNota"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/guardarN"/>
+        </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
