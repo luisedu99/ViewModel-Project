@@ -5,5 +5,89 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RegistroAcademico">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="48dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/regBien"
+            android:textAlignment="center"
+            android:textSize="4mm"/>
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:src="@drawable/registro"
+            android:padding="1.5mm"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/regCarnet"
+            android:textAlignment="center"/>
+
+        <Spinner
+            android:id="@+id/spRCarnet"
+            android:layout_width="316dp"
+            android:layout_height="40dp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/regNombre"
+            android:textAlignment="center"/>
+        <TextView
+            android:id="@+id/tvNombreE"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/regApellido"
+            android:textAlignment="center"/>
+        <TextView
+            android:id="@+id/tvApellidoE"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/regCarrera"
+            android:textAlignment="center"/>
+        <TextView
+            android:id="@+id/tvCarreraE"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/regAño"
+            android:textAlignment="center"/>
+        <TextView
+            android:id="@+id/tvAñoE"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"/>
+        <Button
+            android:id="@+id/btCalcularCUM"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/regCalCum"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/regCumObt"
+            android:textAlignment="center"/>
+        <TextView
+            android:id="@+id/tvCumE"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"/>
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

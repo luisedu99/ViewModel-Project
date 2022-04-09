@@ -21,4 +21,13 @@
     <string name="MenuN">Bienvenido al Registro de Notas</string>
     <string name="calcularuv">Calular uv ganadas</string>
     <string name="uvganadas">U.V Obtenidas</string>
+    <string name="regEstudiante">Buenvenido al registro de Estudiantes</string>
+    <string name="regNombre">Nombre del Estudiante:</string>
+    <string name="regCarnet">Carnet del Estudiantes:</string>
+    <string name="regApellido">Apellido del Estudiante:</string>
+    <string name="regCarrera">Carrera que cursa:</string>
+    <string name="regAño">Año que Cursa:</string>
+    <string name="regCalCum">Calcular Cum</string>
+    <string name="regCumObt">El CUM del estudiante es de:</string>
+    <string name="regBien">Bienvenido al Registro Academico</string>
 </resources>

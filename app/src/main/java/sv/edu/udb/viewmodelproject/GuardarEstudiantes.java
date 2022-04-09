@@ -43,7 +43,7 @@ public class GuardarEstudiantes extends AppCompatActivity {
         String nombreE=gNombre.getText().toString();
         String apellidoE=gApellido.getText().toString();
         String carreraE=gpCarrera.getSelectedItem().toString();
-        String añoE=gpCarrera.getSelectedItem().toString();
+        String añoE=gpAño.getSelectedItem().toString();
 
         ContentValues cv=new ContentValues();
         cv.put("Carnet",carnetE);

@@ -15,6 +15,12 @@
                 android:text="@string/MenuN"
                 android:textAlignment="center"
                 android:textSize="4mm"/>
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:src="@drawable/calificaciones"
+                android:padding="5mm"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
@@ -86,7 +92,8 @@
                 android:id="@+id/btGuardarNota"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/guardarN"/>
+                android:text="@string/guardarN"
+                android:onClick="GuardarNotas"/>
         </LinearLayout>
 
 

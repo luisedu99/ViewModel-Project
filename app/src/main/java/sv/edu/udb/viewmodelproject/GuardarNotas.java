@@ -2,8 +2,10 @@ package sv.edu.udb.viewmodelproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -12,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -117,5 +120,30 @@ public class GuardarNotas extends AppCompatActivity {
         double uv=Double.parseDouble(edUVm.getText().toString().trim());
         double nxv=nota*uv;
         edUvGanadas.setText(String.valueOf(nxv));
+    }
+    public void GuardarNotas(View v){
+        adminSQLiteOpenHelper admin = new adminSQLiteOpenHelper(this,"administracion", null, 1);
+        SQLiteDatabase bd = admin.getWritableDatabase();
+
+        String carnetEn=spCarnetN.getSelectedItem().toString();
+        String codMaterian=edCodigoM.getText().toString();
+        String uvn=edUVm.getText().toString();
+        String Nota=edNotasN.getText().toString();
+        String UvAlcanzada=edUvGanadas.getText().toString();
+
+        ContentValues cv=new ContentValues();
+        cv.put("Carnet",carnetEn);
+        cv.put("codMateria",codMaterian);
+        cv.put("uv",uvn);
+        cv.put("nota",Nota);
+        cv.put("uvAlcanzada",UvAlcanzada);
+        try {
+            bd.insertOrThrow("Notas", null, cv);
+            bd.close();
+            edNotasN.setText("");
+            Toast.makeText(this, "Nota ingresada con exito",Toast.LENGTH_SHORT).show();
+        } catch (SQLiteException e) {
+            Toast.makeText(this, "ERROR!! No se Guardo correctamente" + e.getMessage(),Toast.LENGTH_SHORT).show();
+        }
     }
 }

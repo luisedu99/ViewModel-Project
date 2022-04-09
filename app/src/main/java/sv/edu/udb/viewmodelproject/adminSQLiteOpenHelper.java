@@ -14,7 +14,7 @@ public class adminSQLiteOpenHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table Materias(codMateria text primary key,NombreMateria text,uv int)");
         db.execSQL("create table Estudiantes(Carnet text primary key,Nombre text,Apellido text,Carrera text,Año text)");
-        db.execSQL("Create table Notas(IdNota integer primary key autoincrement,Carnet text,codMateria text,uv int, nota int,uvAlcanzada int,FOREIGN KEY(Carnet) References Estudiantes(Carnet))");
+        db.execSQL("Create table Notas(IdNota integer primary key autoincrement,Carnet text,codMateria text,uv int, nota real,uvAlcanzada real,FOREIGN KEY(Carnet) References Estudiantes(Carnet))");
         cargarDatosMateria(db);
     }
 
