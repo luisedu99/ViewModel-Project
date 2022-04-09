@@ -113,8 +113,8 @@ public class GuardarNotas extends AppCompatActivity {
     }
 
     public void CalcularUV(View view) {
-        int nota= Integer.parseInt(edNotasN.getText().toString().trim());
-        int uv=Integer.parseInt(edUVm.getText().toString().trim());
+        double nota= Double.parseDouble(edNotasN.getText().toString().trim());
+        double uv=Double.parseDouble(edUVm.getText().toString().trim());
         double nxv=nota*uv;
         edUvGanadas.setText(String.valueOf(nxv));
     }
