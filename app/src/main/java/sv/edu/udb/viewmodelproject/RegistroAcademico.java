@@ -62,6 +62,7 @@ public class RegistroAcademico extends AppCompatActivity {
         });
     }
 
+    //obtener datos del estudiante seleccionado en el spinner
     private void consultarEstudiante() {
         adminSQLiteOpenHelper admin = new adminSQLiteOpenHelper(this,"administracion", null, 1);
         SQLiteDatabase db=admin.getReadableDatabase();
@@ -80,11 +81,56 @@ public class RegistroAcademico extends AppCompatActivity {
         obtenerEstudiante();
     }
 
+    //Cargando el spinner
     private void obtenerEstudiante() {
         spCarnetReg=new ArrayList<String>();
         spCarnetReg.add("Seleccione");
         for(int i=0;i<obCum.size();i++){
             spCarnetReg.add(String.valueOf(obCum.get(i).getCarnetE()));
         }
+    }
+
+    //Obtener UV cursadas
+    public String obtenerUVCursadas(){
+        adminSQLiteOpenHelper admin = new adminSQLiteOpenHelper(this,"administracion", null, 1);
+        SQLiteDatabase bd = admin.getWritableDatabase();
+
+        String UVcursadas;
+
+        String sQuery= "Select sum(uv) From Notas where Carnet= CS171609";
+
+        Cursor cursor = bd.rawQuery(sQuery, null);
+
+        if (cursor.moveToFirst()){
+            UVcursadas = String.valueOf(cursor.getInt(0));
+        }
+        else{
+            UVcursadas = "0";
+        }
+        cursor.close();
+        bd.close();
+        return UVcursadas;
+    }
+
+    //Obtener UV ganadas
+    public String obtenerUVGanadas(){
+        adminSQLiteOpenHelper admin = new adminSQLiteOpenHelper(this,"administracion", null, 1);
+        SQLiteDatabase bd = admin.getWritableDatabase();
+
+        String UVganadas;
+
+        String sQuery= "Select sum(uvAlcanzada) From Notas where Carnet= CS171609";
+
+        Cursor cursor = bd.rawQuery(sQuery, null);
+
+        if (cursor.moveToFirst()){
+            UVganadas = String.valueOf(cursor.getInt(0));
+        }
+        else{
+            UVganadas = "0";
+        }
+        cursor.close();
+        bd.close();
+        return UVganadas;
     }
 }

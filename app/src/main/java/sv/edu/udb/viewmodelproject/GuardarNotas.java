@@ -1,6 +1,7 @@
 package sv.edu.udb.viewmodelproject;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.content.ContentValues;
 import android.database.Cursor;
@@ -28,6 +29,8 @@ public class GuardarNotas extends AppCompatActivity {
     ArrayList<Estudiante>estudianteList;
     ArrayList<String> spmateria;
     ArrayList<Materias>obmateria;
+
+
 
 
     @Override
@@ -116,10 +119,16 @@ public class GuardarNotas extends AppCompatActivity {
     }
 
     public void CalcularUV(View view) {
+
+        //ViewModelUV model = new ViewModelProvider(this).get(ViewModelUV.class);
+
         double nota= Double.parseDouble(edNotasN.getText().toString().trim());
         double uv=Double.parseDouble(edUVm.getText().toString().trim());
         double nxv=nota*uv;
+        //model.setNxv(nxv(model.getNxv()));
+        //edUvGanadas.setText("" + model.getNxv());
         edUvGanadas.setText(String.valueOf(nxv));
+
     }
     public void GuardarNotas(View v){
         adminSQLiteOpenHelper admin = new adminSQLiteOpenHelper(this,"administracion", null, 1);
