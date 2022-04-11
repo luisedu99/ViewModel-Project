@@ -1,7 +1,5 @@
 package sv.edu.udb.viewmodelproject;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -16,7 +14,12 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.ArrayList;
+
+import sv.edu.udb.viewmodelproject.ImplementacionViewModel.CalcularUVGanadas;
+import sv.edu.udb.viewmodelproject.ImplementacionViewModel.UVGanadas;
 
 public class GuardarNotas extends AppCompatActivity {
 
@@ -24,6 +27,7 @@ public class GuardarNotas extends AppCompatActivity {
     private TextView edCodigoM,edUVm,edUvGanadas;
     private EditText edNotasN;
     private Button btGuardarN,btCalcularUVs;
+    private UVGanadas uvGanadas;
     ArrayList<String> carneEstudiante;
     ArrayList<Estudiante>estudianteList;
     ArrayList<String> spmateria;
@@ -42,6 +46,7 @@ public class GuardarNotas extends AppCompatActivity {
        btGuardarN=(Button) findViewById(R.id.btGuardarNota);
        edUvGanadas=(TextView) findViewById(R.id.tvUVObtenidas);
        btCalcularUVs=(Button)findViewById(R.id.btCalcularUV);
+       //CalcularUV();
 
        consultarCarnet();
        ArrayAdapter<CharSequence> adaptador=new ArrayAdapter(this, android.R.layout.simple_spinner_item,carneEstudiante);
@@ -115,12 +120,20 @@ public class GuardarNotas extends AppCompatActivity {
         }
     }
 
-    public void CalcularUV(View view) {
+  /*  public void CalcularUV() {
+      //  UVGanadas uvg= new ViewModelProvider(this).get(UVGanadas.class);
         double nota= Double.parseDouble(edNotasN.getText().toString().trim());
         double uv=Double.parseDouble(edUVm.getText().toString().trim());
         double nxv=nota*uv;
-        edUvGanadas.setText(String.valueOf(nxv));
-    }
+        edUvGanadas.setText(String.valueOf(uvGanadas.getUvganada()));
+        btCalcularUVs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                uvGanadas.setUvganada(CalcularUVGanadas.calcularuv(uvGanadas.getUv(),uvGanadas.getNota()));
+                edUvGanadas.setText(String.valueOf(uvGanadas.getUvganada()));
+            }
+        });
+    }*/
     public void GuardarNotas(View v){
         adminSQLiteOpenHelper admin = new adminSQLiteOpenHelper(this,"administracion", null, 1);
         SQLiteDatabase bd = admin.getWritableDatabase();

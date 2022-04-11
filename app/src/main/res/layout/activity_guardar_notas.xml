@@ -87,7 +87,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/calcularuv"
-                android:onClick="CalcularUV"/>
+             />
             <Button
                 android:id="@+id/btGuardarNota"
                 android:layout_width="match_parent"

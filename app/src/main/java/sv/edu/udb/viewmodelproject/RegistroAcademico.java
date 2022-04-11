@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -39,6 +38,7 @@ public class RegistroAcademico extends AppCompatActivity {
         edCarnet=(TextView)findViewById(R.id.tvcarnet);
         eduvCusadas=(TextView)findViewById(R.id.tvuvcursadas);
         eduvObtenidas=(TextView)findViewById(R.id.tvUVObtenidas);
+
        //
 
         consultarEstudiante();
@@ -50,7 +50,7 @@ public class RegistroAcademico extends AppCompatActivity {
                 if(i!=0){
                     edCarnet.setText((obCum.get(i-1).getCarnetE()));
                     obtenerUVCursadas();
-                    obtenerUVGanadas();
+                  //  obtenerUVGanadas();
 
                     tvnombre.setText(obCum.get(i-1).getNombreE());
                     tvapellido.setText(obCum.get(i-1).getApellidoE());
@@ -99,38 +99,31 @@ public class RegistroAcademico extends AppCompatActivity {
             spCarnetReg.add(String.valueOf(obCum.get(i).getCarnetE()));
         }
     }
-    //Obtener UV cursadas
-    public String obtenerUVCursadas(){
+    public void selctnotas(){
         adminSQLiteOpenHelper admin = new adminSQLiteOpenHelper(this,"administracion", null, 1);
         SQLiteDatabase bd = admin.getWritableDatabase();
+        Cursor cursor=bd.rawQuery("Select * From Notas",null);
+    }
+
+    //Obtener UV cursadas
+
+    @SuppressLint("Range")
+    public void obtenerUVCursadas(){
+        adminSQLiteOpenHelper admin = new adminSQLiteOpenHelper(this,"administracion", null, 1);
+        SQLiteDatabase db=admin.getReadableDatabase();
         String carnet=edCarnet.getText().toString().trim();
-
-        String UVcursadas;
-
-        String sQuery= "Select sum(uv) From Notas where Carnet='{carnet}'";
-
-        Cursor cursor = bd.rawQuery(sQuery, null);
-
-        if (cursor.moveToFirst()){
-            UVcursadas = String.valueOf(cursor.getInt(0));
-            eduvCusadas.setText(UVcursadas);
-        }
-        else{
-            UVcursadas = "0";
-        }
+        Cursor cursor = db.rawQuery("Select sum(uv) as Total From Notas where Carnet= '"+carnet+"'", null);
+        cursor.moveToFirst();
+        int count=cursor.getColumnIndex("Total");
         cursor.close();
-        bd.close();
-
-        return UVcursadas;
-
-
+        eduvCusadas.setText(String.valueOf(count));
     }
 
     //Obtener UV ganadas
    // @SuppressLint("Range")
     public String obtenerUVGanadas(){
         adminSQLiteOpenHelper admin = new adminSQLiteOpenHelper(this,"administracion", null, 1);
-        SQLiteDatabase bd = admin.getWritableDatabase();
+        SQLiteDatabase bd = admin.getReadableDatabase();
         String carnet=edCarnet.getText().toString().trim();
 
         String UVganadas;
@@ -140,7 +133,7 @@ public class RegistroAcademico extends AppCompatActivity {
         Cursor cursor = bd.rawQuery(sQuery, null);
 
         if (cursor.moveToFirst()){
-            UVganadas = String.valueOf(cursor.getInt(0));
+            UVganadas = String.valueOf(cursor.getCount());
             eduvObtenidas.setText(UVganadas);
         }
         else{
