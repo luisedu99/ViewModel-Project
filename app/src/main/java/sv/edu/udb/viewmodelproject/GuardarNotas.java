@@ -8,6 +8,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -25,10 +26,13 @@ public class GuardarNotas extends AppCompatActivity {
     private TextView edCodigoM,edUVm,edUvGanadas;
     private EditText edNotasN;
     private Button btGuardarN,btCalcularUVs;
+    private double nxv = 0, nota, uv;
     ArrayList<String> carneEstudiante;
     ArrayList<Estudiante>estudianteList;
     ArrayList<String> spmateria;
     ArrayList<Materias>obmateria;
+
+    private ViewModelUV viewmodelUV;
 
 
 
@@ -37,14 +41,20 @@ public class GuardarNotas extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guardar_notas);
+
+
         spCarnetN=(Spinner) findViewById(R.id.spCarnet);
         spMateriaN=(Spinner) findViewById(R.id.spMateria);
        edCodigoM=(TextView) findViewById(R.id.CodMateria);
        edUVm=(TextView) findViewById(R.id.uvN);
        edNotasN=(EditText) findViewById(R.id.ednotaN);
        btGuardarN=(Button) findViewById(R.id.btGuardarNota);
-       edUvGanadas=(TextView) findViewById(R.id.tvUVObtenidas);
+       //edUvGanadas=(TextView) findViewById(R.id.tvUVObtenidas);
        btCalcularUVs=(Button)findViewById(R.id.btCalcularUV);
+
+       //Declarando campos necesarios para viewmodel
+        edUvGanadas=(TextView) findViewById(R.id.tvUVObtenidas);
+
 
        consultarCarnet();
        ArrayAdapter<CharSequence> adaptador=new ArrayAdapter(this, android.R.layout.simple_spinner_item,carneEstudiante);
@@ -53,6 +63,8 @@ public class GuardarNotas extends AppCompatActivity {
        consultarMateria();
         ArrayAdapter<CharSequence> adaptador2=new ArrayAdapter(this, android.R.layout.simple_spinner_item,spmateria);
         spMateriaN.setAdapter(adaptador2);
+
+
         spMateriaN.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int i, long l) {
@@ -70,6 +82,7 @@ public class GuardarNotas extends AppCompatActivity {
 
             }
         });
+        configView();
     }
 
     private void consultarMateria() {
@@ -120,16 +133,67 @@ public class GuardarNotas extends AppCompatActivity {
 
     public void CalcularUV(View view) {
 
+        viewmodelUV = new ViewModelProvider(this).get(ViewModelUV.class);
         //ViewModelUV model = new ViewModelProvider(this).get(ViewModelUV.class);
 
-        double nota= Double.parseDouble(edNotasN.getText().toString().trim());
-        double uv=Double.parseDouble(edUVm.getText().toString().trim());
-        double nxv=nota*uv;
+        edUvGanadas.setText("" + viewmodelUV.getNxv());
+
+        nota= Double.parseDouble(edNotasN.getText().toString().trim());
+        uv=Double.parseDouble(edUVm.getText().toString().trim());
+
+        nxv = nota*uv;
+        Log.d("nxv: ", String.valueOf(nxv));
+        viewmodelUV.setNxv(nxv);
+        edUvGanadas.setText(""+ viewmodelUV.getNxv());
+
+
+        //Log.d(TAG, "CalcularUV: ", nxv);
+
+
         //model.setNxv(nxv(model.getNxv()));
         //edUvGanadas.setText("" + model.getNxv());
-        edUvGanadas.setText(String.valueOf(nxv));
+        //edUvGanadas.setText(String.valueOf(nxv));
 
     }
+
+    private void configView(){
+        viewmodelUV = new ViewModelProvider(this).get(ViewModelUV.class);
+        //ViewModelUV model = new ViewModelProvider(this).get(ViewModelUV.class);
+
+        //edUvGanadas=(TextView) findViewById(R.id.tvUVObtenidas);
+        //nota= Double.parseDouble(edNotasN.getText().toString().trim());
+        //uv=Double.parseDouble(edUVm.getText().toString().trim());
+
+        viewmodelUV.setNxv(nxv);
+        edUvGanadas.setText("" + viewmodelUV.getNxv());
+
+
+        btCalcularUVs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                //edUvGanadas=(TextView) findViewById(R.id.tvUVObtenidas);
+                //nota= Double.parseDouble(edNotasN.getText().toString().trim());
+                //uv=Double.parseDouble(edUVm.getText().toString().trim());
+
+                //edUvGanadas.setText("" + nxv);
+                //edUvGanadas.setText("" + viewmodelUV.getNxv());
+
+                nota= Double.parseDouble(edNotasN.getText().toString().trim());
+                uv=Double.parseDouble(edUVm.getText().toString().trim());
+
+                Log.d("nota: ", String.valueOf(nota));
+                Log.d("uv: ", String.valueOf(uv));
+                nxv = nota*uv;
+                Log.d("nxv: ", String.valueOf(nxv));
+                viewmodelUV.setNxv(nxv);
+                Log.d("viewmodelUV: ", String.valueOf(viewmodelUV.getNxv()));
+
+                edUvGanadas.setText(""+ viewmodelUV.getNxv());
+            }
+        });
+    }
+
     public void GuardarNotas(View v){
         adminSQLiteOpenHelper admin = new adminSQLiteOpenHelper(this,"administracion", null, 1);
         SQLiteDatabase bd = admin.getWritableDatabase();

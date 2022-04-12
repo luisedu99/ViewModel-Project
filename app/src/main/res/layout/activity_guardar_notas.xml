@@ -78,16 +78,18 @@
                 android:textAlignment="center"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"/>
+
             <TextView
                 android:id="@+id/tvUVObtenidas"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"/>
+                android:layout_height="30dp"
+                android:text="0" />
+
             <Button
                 android:id="@+id/btCalcularUV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/calcularuv"
-                android:onClick="CalcularUV"/>
+                android:text="@string/calcularuv" />
             <Button
                 android:id="@+id/btGuardarNota"
                 android:layout_width="match_parent"
